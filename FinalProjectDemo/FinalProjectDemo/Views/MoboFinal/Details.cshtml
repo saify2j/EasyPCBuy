@@ -1,0 +1,100 @@
+﻿@model FinalProjectDemo.Models.Product.MoboFinal
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <img src="@Model.PicLink" style="margin:20px 20px 20px 0px;" /><br>
+    <table class="table-bordered" cellspacing=20>
+        <tr>
+            <td>Name</td>
+            <td> @Html.DisplayFor(model => model.Name)</td>
+        </tr>
+        <tr>
+            <td>Brand</td>
+            <td> @Html.DisplayFor(model => model.Brand)</td>
+        </tr>
+
+
+        <tr>
+            <td>Price At Ryans Computers</td>
+            <td> ৳ @Html.DisplayFor(model => model.RyansPrice)</td>
+        </tr>
+        <tr>
+            <td >Price At Startech Ltd.</td>
+            <td> ৳ @Html.DisplayFor(model => model.StarPrice)</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button style="background-color:#4e5d6c;width:180px;padding:10px;border:none;" data-toggle="collapse" data-target="#demo">Description&nbsp;&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+
+                <div id="demo" class="collapse">
+                    @Model.Description
+                </div>
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="2">Check out more details at:</td>
+        </tr>
+        <tr>
+            <td><button class="btn-default" onclick="location.href='@Model.StarLink'" type="button">Startech Ltd.</button></td>
+            <td><button class="btn-default" onclick="location.href='@Model.RyansLink'" type="button">Ryans Computer</button></td>
+
+        </tr>
+    </table><br>
+    <button class="btn-default">Add to Wishlist</button>
+    <button class="btn-default">@Html.ActionLink("Write a Review", "Create", "Review", null, new { style = "text-decoration:none" })</button>
+</div>
+
+
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>
+
+<div class="container">
+    <p>Rate this product:</p>
+    <div class="rate">
+
+        <input type="radio" id="star5" name="rate" value="5" />
+        <label for="star5" title="text">5 stars</label>
+        <input type="radio" id="star4" name="rate" value="4" />
+        <label for="star4" title="text">4 stars</label>
+        <input type="radio" id="star3" name="rate" value="3" />
+        <label for="star3" title="text">3 stars</label>
+        <input type="radio" id="star2" name="rate" value="2" />
+        <label for="star2" title="text">2 stars</label>
+        <input type="radio" id="star1" name="rate" value="1" />
+        <label for="star1" title="text">1 star</label>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div>
+    @*<a asp-action="Edit" asp-route-id="@Model.MoboId">Edit</a>*@ 
+    <span class="glyphicon glyphicon-backward"></span>
+    <a asp-action="Index" style="text-decoration:none">Back to Motherboards</a>
+</div>

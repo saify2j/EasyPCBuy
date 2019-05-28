@@ -1,0 +1,117 @@
+﻿@model IEnumerable<FinalProjectDemo.Models.Product.ProcessorFinal>
+
+@{
+    ViewData["Title"] = "Processor Prices";
+}
+
+<h4>Processor Prices In Startech Ltd. and Ryans Computers</h4>
+
+<p>
+    @*<a asp-action="Create">Create New</a>*@
+
+</p>
+
+@*<input class="form-control" placeholder="Enter your keywords!" type="text" name="searchkey">*@
+
+<form asp-controller="ProcessorFinal" asp-action="Index_Search">
+
+    <input id="my_search_field" placeholder="Enter your keywords!" type="text" name="searchkey">
+    &nbsp; &nbsp; &nbsp; <input type="submit" value="Search" />
+    <p style="color:orangered;">@ViewBag.showMsg</p>
+
+</form>
+
+
+<div class="container" style="padding:20px;">
+    @foreach (var item in Model)
+    {
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+
+                    <img src="@item.PicLink" alt="Avatar" style="width:200px;height:200px;">
+
+                </div>
+                <div class="flip-card-back">
+                    <h5>@item.Name</h5>
+                    <p>Startech Price: ৳ @item.StarPrice</p>
+                    <p>Ryans Price: ৳ @item.RyansPrice</p>
+
+                    <button class="btn-default"><a asp-action="Details" asp-route-id="@item.ProId">Details</a> </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@*trying something different*@
+
+
+
+@*<table class="table">
+        <thead>
+            <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Brand)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RyansPrice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StarPrice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StarLink)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RyansLink)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PicLink)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RyansPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StarPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StarLink)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RyansLink)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PicLink)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ProId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProId">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@

@@ -1,0 +1,75 @@
+﻿@model FinalProjectDemo.Models.Product.HddFinal
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>HddFinal</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Brand)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RyansPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RyansPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StarPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StarPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StarLink)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StarLink)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RyansLink)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RyansLink)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PicLink)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PicLink)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Storage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Storage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="HddId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
