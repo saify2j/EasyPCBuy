@@ -24,6 +24,7 @@ namespace FinalProjectDemo.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        private object userManager;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -46,7 +47,6 @@ namespace FinalProjectDemo.Controllers
         {
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
-
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
@@ -226,13 +226,34 @@ namespace FinalProjectDemo.Controllers
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-                    await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
+                    var ctoken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var token_link = Url.Action("ConfirmEmail", "Account", new
+                    {
+                        userid = user.Id,
+                        token = ctoken
+
+                    }, protocol: HttpContext.Request.Scheme);
+                    ViewBag.token = token_link;
+                    ViewBag.emailNotify = "A confirmation mail has been sent to your email address!";
+                    GMailer.GmailUsername = "easypcbuy@gmail.com";
+                    GMailer.GmailPassword = "iit12345";
+
+                    GMailer mailer = new GMailer();
+                    mailer.ToEmail = user.Email;
+                    mailer.Subject = "Verify your email id";
+                    mailer.Body = "Thanks for Registering your account.<br> please verify your email id by clicking the link below: <br>" +token_link;
+                    mailer.IsHtml = true;
+                    mailer.Send();
+
+
+                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+                    //await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
+                    //return RedirectToLocal(returnUrl);
+                    return View("~/Views/Account/EmailConfirmationSent.cshtml");
                 }
                 AddErrors(result);
             }
@@ -331,9 +352,9 @@ namespace FinalProjectDemo.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
         {
-            if (userId == null || code == null)
+            if (userId == null || token == null)
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
@@ -342,7 +363,7 @@ namespace FinalProjectDemo.Controllers
             {
                 throw new ApplicationException($"Unable to load user with ID '{userId}'.");
             }
-            var result = await _userManager.ConfirmEmailAsync(user, code);
+            var result = await _userManager.ConfirmEmailAsync(user, token);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
@@ -366,13 +387,29 @@ namespace FinalProjectDemo.Controllers
                     // Don't reveal that the user does not exist or is not confirmed
                     return RedirectToAction(nameof(ForgotPasswordConfirmation));
                 }
+                var ctoken = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var token_link = Url.Action("ResetPassword", "Account", new
+                {
+                    userid = user.Id,
+                    token = ctoken
+
+                }, protocol: HttpContext.Request.Scheme);
+                GMailer.GmailUsername = "easypcbuy@gmail.com";
+                GMailer.GmailPassword = "iit12345";
+
+                GMailer mailer = new GMailer();
+                mailer.ToEmail = user.Email;
+                mailer.Subject = "Change your password";
+                mailer.Body = "Click the below link to change your password <br>" + token_link;
+                mailer.IsHtml = true;
+                mailer.Send();
 
                 // For more information on how to enable account confirmation and password reset please
                 // visit https://go.microsoft.com/fwlink/?LinkID=532713
-                var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
-                await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                   $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+                //var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+                //var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
+                //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+                //   $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
                 return RedirectToAction(nameof(ForgotPasswordConfirmation));
             }
 
@@ -389,13 +426,13 @@ namespace FinalProjectDemo.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult ResetPassword(string code = null)
+        public IActionResult ResetPassword(string token)
         {
-            if (code == null)
+            if (token == null)
             {
                 throw new ApplicationException("A code must be supplied for password reset.");
             }
-            var model = new ResetPasswordViewModel { Code = code };
+            var model = new ResetPasswordViewModel { Code = token};
             return View(model);
         }
 

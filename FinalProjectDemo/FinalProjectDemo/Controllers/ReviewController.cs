@@ -12,7 +12,7 @@ namespace FinalProjectDemo.Controllers
     public class ReviewController : Controller
     {
         private readonly ProductEntities _context;
-
+        
         public ReviewController(ProductEntities context)
         {
             _context = context;

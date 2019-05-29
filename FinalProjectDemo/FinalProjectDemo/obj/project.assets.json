@@ -13652,11 +13652,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\FinalProjectDemo\\FinalProjectDemo\\FinalProjectDemo.csproj",
+      "projectUniqueName": "G:\\SPL II\\FinalProjectDemo\\FinalProjectDemo\\FinalProjectDemo.csproj",
       "projectName": "FinalProjectDemo",
-      "projectPath": "C:\\Users\\User\\source\\repos\\FinalProjectDemo\\FinalProjectDemo\\FinalProjectDemo.csproj",
+      "projectPath": "G:\\SPL II\\FinalProjectDemo\\FinalProjectDemo\\FinalProjectDemo.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\FinalProjectDemo\\FinalProjectDemo\\obj\\",
+      "outputPath": "G:\\SPL II\\FinalProjectDemo\\FinalProjectDemo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

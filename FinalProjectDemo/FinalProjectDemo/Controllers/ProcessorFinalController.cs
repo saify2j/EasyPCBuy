@@ -18,6 +18,37 @@ namespace FinalProjectDemo.Controllers
             _context = context;
         }
 
+        //POST Index action method
+        [HttpPost]
+        public async Task<IActionResult> IndexAsync(double? lowAmount, double? largeAmount)
+
+        {
+            ProcessorFinal productModel = new ProcessorFinal();
+
+            var processors = from s in _context.ProcessorFinal select s;
+            if (lowAmount == null || largeAmount == null)
+            {
+                ViewBag.showMsg = "Please enter a prices!";
+            }
+            else if (lowAmount != null && largeAmount != null)
+            {
+                ViewBag.showMsg = "";
+                processors = processors.Where(s => s.RyansPrice >= lowAmount && s.RyansPrice <= largeAmount);
+            }
+
+            //return View(await _context.DataProcessor.ToListAsync());
+            return View(await processors.ToListAsync());
+
+
+
+            //var products = _context.ProcessorFinal.Include(c => c.).Include(c => c.SpecialTag)
+            //   .Where(c => c.Price >= lowAmount && c.Price <= largeAmount).ToList();
+            //if(lowAmount==null ||largeAmount==null)
+            //{
+            //   products = _db.Products.Include(c => c.ProductTypes).Include(c => c.SpecialTag).ToList();
+            //}
+            //return View(products);
+        }
 
 
 

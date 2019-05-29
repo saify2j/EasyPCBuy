@@ -1,0 +1,18 @@
+dotnet ef dbcontext scaffold "Data Source=DESKTOP-MVUN8U4\SQLEXPRESS;Initial Catalog=email_confirm;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -o Models\Processor -c ProcessorEntities
+
+
+
+Scaffold-DbContext "Data Source=DESKTOP-MVUN8U4\\SQLEXPRESS;Initial Catalog=email_confirm;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+
+
+dotnet ef dbcontext scaffold "Data Source=DESKTOP-MVUN8U4\SQLEXPRESS;Database=email_confim;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -o Models\Product -c ProductEntities
+
+
+dotnet ef dbcontext scaffold "Data Source=DESKTOP-MVUN8U4\SQLEXPRESS;Database=final_test_database;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -o Models\Product -c ProductEntities
+Scaffold-DbContext "Data Source=DESKTOP-MVUN8U4\SQLEXPRESS;Database=email_confirm;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+
+https://www.youtube.com/watch?v=jHDhwAzskmo
+
+https://ef.readthedocs.io/en/staging/platforms/aspnetcore/existing-db.html

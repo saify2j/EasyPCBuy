@@ -65,13 +65,13 @@
     backface-visibility: hidden;
     
 }
-/* Style the front side (fallback if image is missing) */
+
 .flip-card-front {
     background-color: #FFFFFF;
     color: black;
     border-radius: 10px;
 }
-/* Style the back side */
+
 .flip-card-back {
     background-color: dodgerblue;
     color: white;
@@ -82,10 +82,6 @@ td{
     padding:10px;
     font-size:1.2em;
 }
-
-
-
-
 
 
 .rate {

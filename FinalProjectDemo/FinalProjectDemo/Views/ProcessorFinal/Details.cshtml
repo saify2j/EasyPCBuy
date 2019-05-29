@@ -11,6 +11,7 @@
         <tr>
             <td>Name</td>
             <td> @Html.DisplayFor(model => model.Name)</td>
+            <input hidden />
         </tr>
         <tr>
             <td>Brand</td>
@@ -39,13 +40,13 @@
             <td colspan="2">Check out more details at:</td>
         </tr>
         <tr>
-            <td><button class="btn-default" onclick="location.href='@Model.StarLink'" type="button">Startech Ltd.</button></td>
+            <td><button class="btn-default" onclick="location.href='@Model.StarLink'"  type="button">Startech Ltd.</button></td>
             <td><button class="btn-default" onclick="location.href='@Model.RyansLink'" type="button">Ryans Computer</button></td>
 
         </tr>
     </table><br>
     <button class="btn-default">Add to Wishlist</button>
-    <button class="btn-default">@Html.ActionLink("Write a Review", "Create", "Review", null, new { style = "text-decoration:none" })</button>
+    <button class="btn-default">@Html.ActionLink("Write a Review", "Create", "Review", new { product_name=Model.Name}, new { style = "text-decoration:none" })</button>
 </div>
 
 
@@ -82,7 +83,6 @@
         <input type="radio" id="star1" name="rate" value="1" />
         <label for="star1" title="text">1 star</label>
     </div>
-
 </div>
 <div>
     @*<a asp-action="Edit" asp-route-id="@Model.MoboId">Edit</a>*@

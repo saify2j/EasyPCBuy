@@ -3,7 +3,10 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+@if (ViewBag.name != null)
+{   
+    var name = ViewBag.name;
+}
 <h2>Create</h2>
 
 <h4>Review</h4>
@@ -11,8 +14,10 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
+            <p>@ViewBag.name</p>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <p></p>
                 <label asp-for="ReviewId" class="control-label"></label>
                 <input asp-for="ReviewId" class="form-control" />
                 <span asp-validation-for="ReviewId" class="text-danger"></span>
@@ -43,6 +48,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

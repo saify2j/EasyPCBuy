@@ -10,3 +10,15 @@ C:\Users\User\source\repos\FinalProjectDemo\FinalProjectDemo\obj\Debug\netcoreap
 C:\Users\User\source\repos\FinalProjectDemo\FinalProjectDemo\obj\Debug\netcoreapp2.0\FinalProjectDemo.AssemblyInfo.cs
 C:\Users\User\source\repos\FinalProjectDemo\FinalProjectDemo\obj\Debug\netcoreapp2.0\FinalProjectDemo.dll
 C:\Users\User\source\repos\FinalProjectDemo\FinalProjectDemo\obj\Debug\netcoreapp2.0\FinalProjectDemo.pdb
+G:\SPL II\FinalProjectDemo\FinalProjectDemo\bin\Debug\netcoreapp2.0\FinalProjectDemo.deps.json
+G:\SPL II\FinalProjectDemo\FinalProjectDemo\bin\Debug\netcoreapp2.0\FinalProjectDemo.runtimeconfig.json
+G:\SPL II\FinalProjectDemo\FinalProjectDemo\bin\Debug\netcoreapp2.0\FinalProjectDemo.runtimeconfig.dev.json
+G:\SPL II\FinalProjectDemo\FinalProjectDemo\bin\Debug\netcoreapp2.0\FinalProjectDemo.dll
+G:\SPL II\FinalProjectDemo\FinalProjectDemo\bin\Debug\netcoreapp2.0\FinalProjectDemo.pdb
+G:\SPL II\FinalProjectDemo\FinalProjectDemo\obj\Debug\netcoreapp2.0\FinalProjectDemo.csprojAssemblyReference.cache
+G:\SPL II\FinalProjectDemo\FinalProjectDemo\obj\Debug\netcoreapp2.0\FinalProjectDemo.csproj.CoreCompileInputs.cache
+G:\SPL II\FinalProjectDemo\FinalProjectDemo\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+G:\SPL II\FinalProjectDemo\FinalProjectDemo\obj\Debug\netcoreapp2.0\FinalProjectDemo.AssemblyInfoInputs.cache
+G:\SPL II\FinalProjectDemo\FinalProjectDemo\obj\Debug\netcoreapp2.0\FinalProjectDemo.AssemblyInfo.cs
+G:\SPL II\FinalProjectDemo\FinalProjectDemo\obj\Debug\netcoreapp2.0\FinalProjectDemo.dll
+G:\SPL II\FinalProjectDemo\FinalProjectDemo\obj\Debug\netcoreapp2.0\FinalProjectDemo.pdb

@@ -11,24 +11,25 @@
     &nbsp; &nbsp; &nbsp; <input type="submit" value="Search" />
     <p style="color:orangered;">@ViewBag.showMsg</p>
 </form>
+@ViewBag.notfound
 <div class="container" style="padding:20px;">
-@foreach (var item in Model)
-{
-    <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
+    @foreach (var item in Model)
+    {
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
 
-                <img src="@item.PicLink" alt="Avatar" style="width:200px;height:200px;">
+                    <img src="@item.PicLink" alt="Avatar" style="width:200px;height:200px;">
 
-            </div>
-            <div class="flip-card-back">
-                <h5>@item.Name</h5>
-                <p>Startech Price: BDT @item.StarPrice</p>
-                <p>Ryans Price: BDT @item.RyansPrice</p>
+                </div>
+                <div class="flip-card-back">
+                    <h5>@item.Name</h5>
+                    <p>Startech Price: BDT @item.StarPrice</p>
+                    <p>Ryans Price: BDT @item.RyansPrice</p>
 
-                <button class="btn-default"><a asp-action="Details" asp-route-id="@item.ProId">Details</a> </button>
+                    <button class="btn-default"><a asp-action="Details" asp-route-id="@item.ProId">Details</a> </button>
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
 </div>
